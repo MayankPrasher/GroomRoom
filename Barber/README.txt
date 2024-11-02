@@ -5,7 +5,18 @@
      User-queue
 2.Barber Back-end
      Database Design
+     ->Barber
+        ->barber_code(primary)
+        ->barber_name
+        ->barber_password
+        ->barber_email
+        ->barber_partner_id[]
      CSRF Authrization
+         ->Auth
+            ->barber_code(barber_007)
+            ->barber_password(barber@007)
+     Session management
+     -> if barber is not logged in , then any page of application is not accessible.
      barber functionalites
        -> ON/OFF the shop.
         ->create a chair.
