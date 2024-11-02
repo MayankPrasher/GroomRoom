@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block title %}Home - Groom Room{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/Auth/styles.css' %}">{% endblock %}
+
+{% block content %}
+<div class="container"> 
+ <div class="auth-display-photo">
+
+ </div>  
+ <div class="auth-form">
+    <span class="auth-form-title-span">GROOMROOM.</span>
+    <div class="auth-form-inside-div">
+        <span class="auth-greeting-span">Welcome,Barber!<br>
+            <span>Let's get those chairs filled</span>
+        </span>
+        <form class="auth-form-inside">
+            
+            <div class="input-control border">
+                <input type="text" autocomplete="off" class="barber-id-input"> 
+            </div>
+           <div class="input-control border">
+            <input type="password" autocomplete="off" class="barber-password-input">
+           </div>
+           <div class="input-control-btn border">
+            <button type="submit" class="barber-auth-btn">Submit</button>
+           </div>
+        </form>
+    </div>
+ </div>   
+</div>
+{% endblock %}
