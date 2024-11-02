@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block title%}GroomRoom{%endblock%}
+{% block style%}<link rel="stylesheet" href="{% static 'css/Barber/landing-page.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <i class="fa fa-bars menu-icon" style="font-size:36px" id="menu-icon"></i>
+    <img src="{%static 'icons/app/queue2.png'%}" class="queue-icon">
+    <div class="sidebar" id="sidebar">
+    </div>
+    <div class="seat"></div>
+    <div class="seat"></div>
+    <div class="seat"></div>
+</div>
+{% endblock %}
