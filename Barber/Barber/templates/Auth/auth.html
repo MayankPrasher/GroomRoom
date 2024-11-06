@@ -18,7 +18,7 @@
         <span class="auth-greeting-span">Welcome,Barber!<br>
             <span>Let's get those chairs filled</span>
         </span>
-        <form class="auth-form-inside">
+        <!-- <form class="auth-form-inside">
             
             <div class="input-control border">
                 <input type="text" autocomplete="off" class="barber-id-input" placeholder="Enter the Barber Code"> 
@@ -29,6 +29,27 @@
            <div class="input-control-btn">
             <button type="submit" class="barber-auth-btn">Submit</button>
            </div>
+        </form> -->
+
+        {% if messages %}
+            <div class="alert-messages">
+                {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form class="auth-form-inside" method="POST">
+            {% csrf_token %}
+            <div class="input-control border">
+                <input type="text" name="barber_code" autocomplete="off" class="barber-id-input" placeholder="Enter the Barber Code"> 
+            </div>
+            <div class="input-control border">
+                <input type="password" name="password" autocomplete="off" class="barber-password-input" placeholder="Enter the password">
+            </div>
+            <div class="input-control-btn">
+                <button type="submit" class="barber-auth-btn">Submit</button>
+            </div>
         </form>
     </div>
  </div>   
