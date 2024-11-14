@@ -46,9 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const timeLabel = document.createElement('span');
         timeLabel.innerHTML = '<b>Estimated time : 3min</b>';
         seatContainer.appendChild(timeLabel);
-        const container2 = document.querySelector('.container');
-            const armchairSVG = container2.getAttribute('data-armchair-svg');
-            seat.innerHTML = `<img src="${armchairSVG}" height="1500px" width="1500px">`;
             // Append delete button to seat
             seat.appendChild(deleteButton);
 
