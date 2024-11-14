@@ -5,13 +5,28 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class="container" data-armchair-svg="{% static 'icons/app/armchair.svg' %}">
     <i class="fa fa-bars menu-icon" style="font-size:36px" id="menu-icon"></i>
     <img src="{%static 'icons/app/queue2.png'%}" class="queue-icon">
     <div class="sidebar" id="sidebar">
     </div>
     <div class="add-seat-btn-container">
         <button class="add-seat"><i style="border: none; color: white; font-size: 44px; font-style: normal;"> 	&#43;</i></button>
+    </div>
+    <div class="seat-container border">
+        <span class="border"><b>Estimated time : 3min</b></span>
+        <div class="seat border" id="seat">
+            <div class="seat-img">
+                <img src="{%static 'icons/app/queue2.png'%}">
+            </div>
+            <div class="delete-seat-btn border">
+                &#215;
+            </div>
+        </div>
+        <span>
+            partner 1
+        </span>
+       
     </div>
     <!-- <div class="seat-container">
         <span><b>Estimated time : 3min</b></span>
@@ -23,20 +38,8 @@
         <span>
             partner 1
         </span>
-       
-    </div>
-    <div class="seat-container">
-        <span><b>Estimated time : 3min</b></span>
-        <div class="seat" id="seat">
-            <div class="delete-seat-btn">
-                &#215;
-            </div>
-        </div>
-        <span>
-            partner 1
-        </span>
       
-    </div> -->
+    </div>  -->
    
     
    

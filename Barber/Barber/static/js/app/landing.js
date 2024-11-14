@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create and add seat element
         const seat = document.createElement('div');
         seat.classList.add('seat');
-
         // Create and add delete button
         const deleteButton = document.createElement('div');
         deleteButton.classList.add('delete-seat-btn');
@@ -47,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const timeLabel = document.createElement('span');
         timeLabel.innerHTML = '<b>Estimated time : 3min</b>';
         seatContainer.appendChild(timeLabel);
+        const container2 = document.querySelector('.container');
+            const armchairSVG = container2.getAttribute('data-armchair-svg');
+            seat.innerHTML = `<img src="${armchairSVG}" height="1500px" width="1500px">`;
             // Append delete button to seat
             seat.appendChild(deleteButton);
 
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const partnerLabel = document.createElement('span');
         partnerLabel.textContent = `Partner ${container.children.length}`; // Dynamically number partners
         seatContainer.appendChild(partnerLabel);
-
+           
         // Add seat container to main container
         container.appendChild(seatContainer);
     }

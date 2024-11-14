@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'GroomRoom',
-        'USER':'admin',
+        'USER':'postgres',
         'PASSWORD':'4149',
         'HOST':'localhost',
         'PORT':'5432'
