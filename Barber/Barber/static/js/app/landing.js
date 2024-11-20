@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebar.style.left = sidebarOpen ? '-500px' : '0';
         sidebarOpen = !sidebarOpen;
     }
-
     toggleIcon.addEventListener('click', function (e) {
         toggleSidebar();
         e.stopPropagation();
@@ -142,4 +141,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     addSeatButton.addEventListener('click', addSeat);
+    const queue_sidebar = document.getElementById('queue-sidebar');
+    const toggleQueueIcon = document.getElementById('queue-icon');
+    let queuesidebarOpen = false;
+
+    // Toggle queue sidebar function
+    function toggleQueueSidebar() {
+        if (!queue_sidebar) {
+            console.error('Queue sidebar element not found!');
+            return;
+        }
+        queue_sidebar.style.right = queuesidebarOpen ? '-500px' : '0';
+        queuesidebarOpen = !queuesidebarOpen;
+    }
+
+    // Toggle sidebar on icon click
+    toggleQueueIcon?.addEventListener('click', function (e) {
+        toggleQueueSidebar();
+        e.stopPropagation();
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function (e) {
+        if (queuesidebarOpen && !queue_sidebar.contains(e.target) && e.target !== toggleQueueIcon) {
+            toggleQueueSidebar();
+        }
+    });
+
 });
