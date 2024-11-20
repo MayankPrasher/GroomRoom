@@ -83,6 +83,26 @@ button.add-seat{
     background-color: rgb(176, 170, 170) !important;
     cursor: pointer;
 }
+.doneButton{
+  width: 100px;
+  height: 40px;
+  background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    background-color: rgb(95,200,29);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    font-weight:bold;
+    letter-spacing: 1px;
+    border-radius: 10px;
+
+}
 .container .menu-icon{
     position:absolute;
     left: 15px;
@@ -90,8 +110,9 @@ button.add-seat{
     color: rgb(47, 137, 37);
     transition: color ease;
     transition-duration: 1s;
+    z-index: 2;
 }
-.container .sidebar{
+.container .sidebar,.queue-sidebar{
     position: relative;
     height: 100vh;
     width: 25%;
@@ -104,6 +125,21 @@ button.add-seat{
     display: flex;
     flex-direction:column;
     align-items: center;
+}
+.queue-sidebar{
+  position: relative;
+  height: 100vh;
+  width: 25%;
+  background: #333; /* Dark gray */
+  color: white; 
+  position:absolute;
+  top:0;
+  right:-500px;
+  transition: right 0.3s ease;
+  z-index: 1;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
 }
 .sidebar-profile-card{
     width:100%;
@@ -200,6 +236,109 @@ button.add-seat{
   .Btn:active {
     transform: translate(2px ,2px);
   }
+
+  .sidebar-button-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    padding:10px;
+  }
+  .sidebar-button-container button{
+    width: 100%;
+    height:20%;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    background-color: rgb(95,200,29);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    font-weight:bold;
+    letter-spacing: 1px;
+    border-radius: 10px;
+
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000; /* Above all other content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto; /* 15% from top and centered */
+  padding: 20px;
+  border-radius: 10px;
+  width: 40%; /* Adjust as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #000;
+  text-decoration: none;
+}
+.pay-done-btn{
+  width: 25%;
+    height: 40%;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    background-color: rgb(95,200,29);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    font-weight:bold;
+    letter-spacing: 1px;
+    border-radius: 10px;
+}
+.pay-not-done-btn{
+  width: 25%;
+  height: 40%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  background-color: rgb(200, 29, 29);
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  font-weight:bold;
+  letter-spacing: 1px;
+  border-radius: 10px;
+
+}
 .border{
     border: 1px solid black;
 
