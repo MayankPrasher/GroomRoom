@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container" data-armchair-svg="{% static 'icons/app/armchair.svg' %}">
     <i class="fa fa-bars menu-icon" style="font-size:36px" id="menu-icon"></i>
-    <img src="{%static 'icons/app/queue2.png'%}" class="queue-icon">
+    <img src="{%static 'icons/app/queue2.png'%}" class="queue-icon border" id="queue-icon">
     <div class="sidebar" id="sidebar">
         <div class="sidebar-profile-card">
           <div class="profile-photo">
@@ -22,10 +22,26 @@
             
             <div class="text">Logout</div>
           </button>
-        </form>
+          </form>
+          <div class="sidebar-button-container">
+           <button>Add Chair</button>
+           <button>Services</button>
+           <button>Report</button>
+          </div>
     </div>
     <div class="add-seat-btn-container">
         <button class="add-seat"><i style="border: none; color: white; font-size: 44px; font-style: normal;"> 	&#43;</i></button>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Task Completed</h2>
+            <p>You have marked this seat as done!</p>
+        </div>
+    </div>
+    <div class="queue-sidebar" id="queue-sidebar">
+    
+
     </div>
     <!-- <div class="seat-container">
         <span><b>Estimated time : 3min</b></span>
