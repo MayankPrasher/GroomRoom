@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'UserApp',
+    'UserAuth',
 ]
 
 MIDDLEWARE = [
@@ -73,10 +75,21 @@ WSGI_APPLICATION = 'User.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'GroomRoom',
+        'USER':'postgres',
+        'PASSWORD':'4149',
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 
