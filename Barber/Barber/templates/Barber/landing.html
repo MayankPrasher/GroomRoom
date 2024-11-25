@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container" data-armchair-svg="{% static 'icons/app/armchair.svg' %}">
     <i class="fa fa-bars menu-icon" style="font-size:36px" id="menu-icon"></i>
-    <img src="{%static 'icons/app/queue2.png'%}" class="queue-icon border" id="queue-icon">
+    <img src="{%static 'icons/app/queue2.png'%}" class="queue-icon" id="queue-icon">
     <div class="sidebar" id="sidebar">
         <div class="sidebar-profile-card">
           <div class="profile-photo">
@@ -40,8 +40,30 @@
         </div>
     </div>
     <div class="queue-sidebar" id="queue-sidebar">
+        <h2>
+            <center>Queue</center>
+        </h2>
+     <div class="next-person-container" id="next-person-container">
+         <div class="next-person">
+            <div class="next-person-profile-pic">
+            </div>
+            <h3 class="next-person-name"><center>Suresh Verma</center>
+                <center style="font-size:12px;letter-spacing:0.7px;">Estimated time :10min</center>
+            </h3>
+            <button class="person-discard-btn">&#215;</button>
+         </div>
+     </div>
+     <div class="upcoming-persons-list" id="upcoming-persons-list">
+        <!-- <div class="person-in-queue">
+            <div class="person-in-queue-profile-pic">
+            </div>
+            <h5 class="person-in-queue-name"><center>Suresh Verma</center>
+                <center style="font-size:12px;letter-spacing:0.7px;">Estimated time :10min</center>
+            </h5>
+        </div> -->
     
-
+     </div>
+     
     </div>
     <!-- <div class="seat-container">
         <span><b>Estimated time : 3min</b></span>

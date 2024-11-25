@@ -1,31 +1,116 @@
 document.addEventListener('DOMContentLoaded', function () {
     const sidebar = document.getElementById('sidebar');
+    const queue_sidebar = document.getElementById('queue-sidebar');
     const toggleIcon = document.getElementById('menu-icon');
+    const toggleQueueIcon = document.getElementById('queue-icon');
     const addSeatButton = document.querySelector('.add-seat');
     const container = document.querySelector('.container');
+    const upcomingPersonsList = document.getElementById('upcoming-persons-list');
+    const nextPersonContainer = document.getElementById('next-person-container');
+
     let sidebarOpen = false;
+    let queueSidebarOpen = false;
 
     // Example customer queue
     const queue = ["Customer 1", "Customer 2", "Customer 3", "Customer 4"];
 
+    // Function to render the updated queue
+    function renderQueue() {
+        nextPersonContainer.innerHTML = ""; // Clear existing content
+        upcomingPersonsList.innerHTML = ""; // Clear existing queue display
+    
+        if (queue.length > 0) {
+            nextPersonContainer.innerHTML = `
+                <div class="next-person">
+                    <div class="next-person-profile-pic"></div>
+                    <h3 class="next-person-name">
+                        <center>${queue[0]}</center>
+                        <center style="font-size:12px;letter-spacing:0.7px;">Estimated time: 10min</center>
+                    </h3>
+                    <button class="person-discard-btn">&#215;</button>
+                </div>`;
+            
+            // Add event listener for discard button
+            const discardButton = nextPersonContainer.querySelector('.person-discard-btn');
+            discardButton.addEventListener('click', function () {
+                discardPerson();
+            });
+        } else {
+            nextPersonContainer.innerHTML = `
+                <div class="next-person">
+                    <div class="next-person-profile-pic" style="opacity:0;"></div>
+                    <h3 class="next-person-name">
+                        <center>All Done!!</center>
+                        <center style="font-size:12px;letter-spacing:0.7px;opacity:0;">Estimated time: 10min</center>
+                    </h3>
+                    <button class="person-discard-btn" style="opacity:0;">&#215;</button>
+                </div>`;
+        }
+    
+        for (let i = 1; i < queue.length; i++) {
+            upcomingPersonsList.innerHTML += `
+                <div class="person-in-queue">
+                    <div class="person-in-queue-profile-pic"></div>
+                    <h5 class="person-in-queue-name">
+                        <center>${queue[i]}</center>
+                        <center style="font-size:12px;letter-spacing:0.7px;">Estimated time: 10min</center>
+                    </h5>
+                </div>`;
+        }
+    }
+
+    // Initial render of the queue
+    renderQueue();
+    function discardPerson() {
+        if (queue.length > 0) {
+            const discardedPerson = queue.shift(); // Remove the first person from the queue
+            console.log(`Discarded: ${discardedPerson}`); // Optional: Log the discarded person
+            renderQueue(); // Update the queue display
+        } else {
+            alert('No customers to discard!');
+        }
+    }
     // Toggle sidebar function
     function toggleSidebar() {
         sidebar.style.left = sidebarOpen ? '-500px' : '0';
         sidebarOpen = !sidebarOpen;
     }
+
+    // Toggle queue sidebar function
+    function toggleQueueSidebar() {
+        queue_sidebar.style.top = queueSidebarOpen ? '-5000px' : '0';
+        queueSidebarOpen = !queueSidebarOpen;
+    }
+
+    // Toggle left sidebar on icon click
     toggleIcon.addEventListener('click', function (e) {
         toggleSidebar();
         e.stopPropagation();
     });
 
+    // Toggle right queue sidebar on icon click
+    toggleQueueIcon.addEventListener('click', function (e) {
+        toggleQueueSidebar();
+        e.stopPropagation();
+    });
+
+    // Close sidebars when clicking outside
     document.addEventListener('click', function (e) {
         if (sidebarOpen && !sidebar.contains(e.target) && e.target !== toggleIcon) {
             toggleSidebar();
+        }
+        if (queueSidebarOpen && !queue_sidebar.contains(e.target) && e.target !== toggleQueueIcon) {
+            toggleQueueSidebar();
         }
     });
 
     // Function to add a seat
     function addSeat() {
+        if (queue.length === 0) {
+            alert('No customers in the queue!');
+            return;
+        }
+
         const seatContainer = document.createElement('div');
         seatContainer.classList.add('seat-container');
 
@@ -41,12 +126,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Assign next customer to the seat
         const timeLabel = document.createElement('span');
-        if (queue.length > 0) {
-            const currentCustomer = queue.shift(); // Remove and assign the first customer in the queue
-            timeLabel.innerHTML = `<b>Current Customer: ${currentCustomer}</b>`;
-        } else {
-            timeLabel.innerHTML = '<b>No Customer</b>';
-        }
+        const currentCustomer = queue.shift(); // Remove and assign the first customer in the queue
+        timeLabel.innerHTML = `<b>Current Customer: ${currentCustomer}</b>`;
         timeLabel.classList.add('customer-label');
         seatContainer.appendChild(timeLabel);
 
@@ -68,6 +149,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         container.appendChild(seatContainer);
+
+        // Update the queue display
+        renderQueue();
     }
 
     // Function to create a modal
@@ -125,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Handle payment and update queue
     function handlePayment(paymentDone, customerLabel, modal, doneButton) {
-        // Store payment status for the current customer
         console.log(`Customer: ${customerLabel.textContent}, Payment Status: ${paymentDone ? 'Done' : 'Pending'}`);
 
         // Assign the next customer to the seat
@@ -137,35 +220,12 @@ document.addEventListener('DOMContentLoaded', function () {
             doneButton.disabled = true; // Disable the button if no customers are left
         }
 
+        // Update the queue display
+        renderQueue();
+
         modal.style.display = 'none';
     }
 
+    // Add event listener for adding seats
     addSeatButton.addEventListener('click', addSeat);
-    const queue_sidebar = document.getElementById('queue-sidebar');
-    const toggleQueueIcon = document.getElementById('queue-icon');
-    let queuesidebarOpen = false;
-
-    // Toggle queue sidebar function
-    function toggleQueueSidebar() {
-        if (!queue_sidebar) {
-            console.error('Queue sidebar element not found!');
-            return;
-        }
-        queue_sidebar.style.right = queuesidebarOpen ? '-500px' : '0';
-        queuesidebarOpen = !queuesidebarOpen;
-    }
-
-    // Toggle sidebar on icon click
-    toggleQueueIcon?.addEventListener('click', function (e) {
-        toggleQueueSidebar();
-        e.stopPropagation();
-    });
-
-    // Close sidebar when clicking outside
-    document.addEventListener('click', function (e) {
-        if (queuesidebarOpen && !queue_sidebar.contains(e.target) && e.target !== toggleQueueIcon) {
-            toggleQueueSidebar();
-        }
-    });
-
 });
