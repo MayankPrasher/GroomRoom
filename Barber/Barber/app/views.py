@@ -5,12 +5,6 @@ def landing_view(request):
         return redirect('Auth')
     return render(request, 'Barber/landing.html', {})
 
-
-def logout_view(request):
-    if 'is_logged_in' in request.session:
-        del request.session['is_logged_in']
-    return redirect('Auth')
-
 def logout_view(request): 
     if request.method == "POST":
         if 'is_logged_in' in request.session:
